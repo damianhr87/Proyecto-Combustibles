@@ -1,0 +1,27 @@
+{
+  "name": "preciocombustible",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "\u001b[A\u001b[A\u001b[A\u001b[A\u001b[C\u001b[C\u001b[B\u001b[B\u001b[B\u001b[B\u001b[D\u001b[D\u001b[D"
+  ],
+  "author": "Damián-Rodríguez",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "convert-csv-to-json": "0.0.13",
+    "csvjson": "^5.1.0",
+    "csvtojson": "^2.0.8",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "fs": "0.0.1-security",
+    "path": "^0.12.7",
+    "request": "^2.88.0",
+    "response": "^0.18.0"
+  }
+}
