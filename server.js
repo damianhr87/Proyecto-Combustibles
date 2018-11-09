@@ -96,6 +96,7 @@ var getUbicacionEmpresas = (jsc) => {
 
 
 var getProductosPorEmpresa= (jsc) => {
+  
     var empresas=getUbicacionEmpresas(jsc);
     var auxiliarArray=[];
     var auxiliarArray2=[];
@@ -104,10 +105,12 @@ var getProductosPorEmpresa= (jsc) => {
 
         let nombreEstacion=jsc[i]["empresa"];
 
-        for(let j=i;j<jsc.length;j++) {
-            if(((auxiliarArray.indexOf(jsc[j]["producto"])) == -1) && (jsc[i]["empresa"] == empresas[j]['empresa'])) {
+        for(let j=i; j<jsc.length; j++) {
+            
+            if( ((jsc[i]['empresa'] == empresas[j]['empresa']) && (auxiliarArray.indexOf(jsc[j]["producto"])) == -1)) {
                 auxiliarArray.push(jsc[j]["producto"]);
             }
+
             auxiliarArray2.push({empresa:nombreEstacion ,productos:auxiliarArray})
         }
     }
