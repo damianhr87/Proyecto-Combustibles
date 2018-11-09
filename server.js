@@ -43,7 +43,7 @@ fs.writeFileSync('./json/nafta-json.in', data);
 var jsonData = JSON.parse(fs.readFileSync('./json/nafta-json.in', 'utf8'));
 
 // for para filtrar por empresa ---------------------
-var getEmpresas = (jsc)=>{
+var getEmpresas = (jsc) => {
     let empresas=[];
     for(let i=0; i<jsc.length;i++){
         if(empresas.indexOf(jsc[i]["empresa"]) == -1 ){
@@ -54,7 +54,7 @@ var getEmpresas = (jsc)=>{
 }
 
 
-var getProvincias = (jsc)=>{
+var getProvincias = (jsc) => {
     let provincias=[];
     for(let i=0; i<jsc.length;i++){
         if(provincias.indexOf(jsc[i]["provincia"]) == - 1){
@@ -64,7 +64,7 @@ var getProvincias = (jsc)=>{
     return provincias;
 }
 
-var getEmpresasPorId = (jsc)=>{
+var getEmpresasPorId = (jsc) => {
     let idempresas=[];
     for(let i=0;i<jsc.length;i++){
         if(idempresas.indexOf(jsc[i]["idempresa"]) == -1 && jsc[i]["provincia"]=="CORDOBA"){
@@ -76,11 +76,13 @@ var getEmpresasPorId = (jsc)=>{
 }
 
 
-var getUbicacionEmpresas = (jsc)=>{
+var getUbicacionEmpresas = (jsc) => {
     let ubicacionEmpresas=[];
     let idscorboba=getEmpresasPorId(jsc);
+    let auxiliarArray=[];
     for(let i=0;i<jsc.length;i++){
-        if(-1 ==idscorboba.indexOf(jsc[i]["idempresa"])){
+        if(-1 !=idscorboba.indexOf(jsc[i]["idempresa"]) && -1 == auxiliarArray.indexOf(jsc[i]["empresa"])) {
+            auxiliarArray.push(jsc[i]["empresa"]);
             let nombreEmpresa=(jsc[i]["empresa"]);
             let direccionEmpresa=(jsc[i]["direccion"]);
             let latitud=(jsc[i]["latitud"]);
