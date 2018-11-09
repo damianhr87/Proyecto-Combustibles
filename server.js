@@ -53,7 +53,7 @@ var getEmpresas = (jsc) => {
     return empresas;
 }
 
-
+// for para mostrar provincias -----------------
 var getProvincias = (jsc) => {
     let provincias=[];
     for(let i=0; i<jsc.length;i++){
@@ -63,7 +63,7 @@ var getProvincias = (jsc) => {
     }
     return provincias;
 }
-
+//for para mostrar Empresas ----------------
 var getEmpresasPorId = (jsc) => {
     let idempresas=[];
     for(let i=0;i<jsc.length;i++){
@@ -75,13 +75,13 @@ var getEmpresasPorId = (jsc) => {
     return idempresas;
 }
 
-
+// for para mostrar ubicaciones ( return {empresa , direccion, latitud , longitud}-------
 var getUbicacionEmpresas = (jsc) => {
-    let ubicacionEmpresas=[];
-    let idscorboba=getEmpresasPorId(jsc);
-    let auxiliarArray=[];
+    var ubicacionEmpresas=[];
+    var idscordoba=getEmpresasPorId(jsc);
+    var auxiliarArray=[];
     for(let i=0;i<jsc.length;i++){
-        if(-1 !=idscorboba.indexOf(jsc[i]["idempresa"]) && -1 == auxiliarArray.indexOf(jsc[i]["empresa"])) {
+        if(-1 !=idscordoba.indexOf(jsc[i]["idempresa"]) && -1 == auxiliarArray.indexOf(jsc[i]["empresa"])) {
             auxiliarArray.push(jsc[i]["empresa"]);
             let nombreEmpresa=(jsc[i]["empresa"]);
             let direccionEmpresa=(jsc[i]["direccion"]);
@@ -93,7 +93,49 @@ var getUbicacionEmpresas = (jsc) => {
     }
     return ubicacionEmpresas;
 }
-console.log(getUbicacionEmpresas(jsonData))
+
+
+var getProductosPorEmpresa= (jsc) => {
+    var empresas=getUbicacionEmpresas(jsc);
+    var auxiliarArray=[];
+    var auxiliarArray2=[];
+
+    for(let i=0;i<jsc.length;i++) {
+
+        let nombreEstacion=jsc[i]["empresa"];
+
+        for(let j=i;j<jsc.length;j++) {
+            if(((auxiliarArray.indexOf(jsc[j]["producto"])) == -1) && (jsc[i]["empresa"] == empresas[j]['empresa'])) {
+                auxiliarArray.push(jsc[j]["producto"]);
+            }
+            auxiliarArray2.push({empresa:nombreEstacion ,productos:auxiliarArray})
+        }
+    }
+
+   return auxiliarArray2;     // {empresa:nombreEmpresa , productos : [] }
+}
+
+console.log(getProductosPorEmpresa(jsonData))
+
+var getProductosPrecios = (jsc) => {
+    let idscordoba=getEmpresasPorId(jsc);
+    let productosPrecios=[];
+    let auxiliarArray=[]
+    for(let i=0;i<jsc.length;i++){
+        if(-1 !=idscordoba.indexOf(jsc[i]["idempresa"])){
+            let productoCombustible=(jsc[i]["producto"]);
+            let precioNafta=(jsc[i]["precio"]);
+            let nombreEmpresa=(jsc[i]["empresa"]);
+            let infoEmpresa={producto:productoCombustible,precio:precioNafta,empresa:nombreEmpresa}
+            productosPrecios.push({empresa:nombreEmpresa,info:infoEmpresa})
+
+        }
+
+    }
+    return productosPrecios;
+}
+console.log(getProductosPrecios(jsonData))
+
 
 // var getEmpresasDeCordoba = (jsc)=>{
 //     let empresas=[];
@@ -117,17 +159,10 @@ console.log(getUbicacionEmpresas(jsonData))
 
 
 
-
-
-
-
-
-
-
 app.get('/', (req,res)=> console.log('algo'))
 //app.post('/' ,(req,res)=> )
-app.listen(3000 , (req,res)=> console.log("Puerto iniciado"))	
-	
+app.listen(3000 , (req,res)=> console.log("Puerto iniciado")) 
+  
 
 
 
