@@ -1,3 +1,4 @@
+//servidor acceso a api gobierno---------------
 var express = require('express');
 var app=express();
 var url_naftacsv = 'http://datos.minem.gob.ar/dataset/1c181390-5045-475e-94dc-410429be4b17/resource/80ac25de-a44a-4445-9215-090cf55cfda5/download/precios-en-surtidor-resolucin-3142016.csv';
@@ -14,7 +15,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
 
 
-
+//bajo archivo csv a disco ----------------
 var request = http.get(url_naftacsv, function(response) {
     if (response.statusCode === 200) {
         var file = fs.createWriteStream("./csv/nafta.csv");
@@ -29,13 +30,93 @@ var options = {
   delimiter: ',',
   quote: '"'
 };
+// Escribir archivo en disco -----
 var data_nafta = fs.readFileSync('./csv/nafta.csv', { encoding: 'utf8' });
 console.log(data);
 var json_result = csvjson.toObject(data_nafta, options);
 var data = JSON.stringify(json_result);
+
+//genero archivo de texto con forma pseudo.json ----------------
 fs.writeFileSync('./json/nafta-json.in', data);
 
+//este es archivo json en memoria no en disco -----------
 var jsonData = JSON.parse(fs.readFileSync('./json/nafta-json.in', 'utf8'));
+
+// for para filtrar por empresa ---------------------
+var getEmpresas = (jsc)=>{
+    let empresas=[];
+    for(let i=0; i<jsc.length;i++){
+        if(empresas.indexOf(jsc[i]["empresa"]) == -1 ){
+            empresas.push(jsc[i]["empresa"])
+        }
+    }
+    return empresas;
+}
+
+
+var getProvincias = (jsc)=>{
+    let provincias=[];
+    for(let i=0; i<jsc.length;i++){
+        if(provincias.indexOf(jsc[i]["provincia"]) == - 1){
+            provincias.push(jsc[i]["provincia"])
+        }
+    }
+    return provincias;
+}
+
+var getEmpresasPorId = (jsc)=>{
+    let idempresas=[];
+    for(let i=0;i<jsc.length;i++){
+        if(idempresas.indexOf(jsc[i]["idempresa"]) == -1 && jsc[i]["provincia"]=="CORDOBA"){
+            idempresas.push(jsc[i]["idempresa"])
+        }
+
+    }
+    return idempresas;
+}
+
+
+var getUbicacionEmpresas = (jsc)=>{
+    let ubicacionEmpresas=[];
+    let idscorboba=getEmpresasPorId(jsc);
+    for(let i=0;i<jsc.length;i++){
+        if(-1 ==idscorboba.indexOf(jsc[i]["idempresa"])){
+            let nombreEmpresa=(jsc[i]["empresa"]);
+            let direccionEmpresa=(jsc[i]["direccion"]);
+            let latitud=(jsc[i]["latitud"]);
+            let longitud=(jsc[i]["longitud"]);
+            let provincia=(jsc[i]["provincia"]);
+            ubicacionEmpresas.push({empresa:nombreEmpresa,direccion:direccionEmpresa,latitud:latitud,longitud:longitud,provincia:provincia})
+        }
+    }
+    return ubicacionEmpresas;
+}
+console.log(getUbicacionEmpresas(jsonData))
+
+// var getEmpresasDeCordoba = (jsc)=>{
+//     let empresas=[];
+//     for(let i=0; i<jsc.length;i++){
+//         if(id=)
+//     }
+
+// }
+
+// var getEstacionesPorProvincia = (jsc)=>{
+//     let estaciones=[];
+//     for (let i=0; i<jsc.length;i++){
+//         if(jsc[i]["provincia"]) =="CORDOBA"{
+//           {empresa:jsc[i]["empresa"],producto}  
+
+//         }
+//     }
+
+// }
+
+
+
+
+
+
 
 
 
