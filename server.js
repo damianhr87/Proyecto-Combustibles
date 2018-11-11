@@ -104,8 +104,9 @@ var getProductosPorEmpresa= (jsc) => {
       var productos=[]
       jsc.map(empresa => {
         if (empresa.empresa == empresas[i].empresa){
-          productos.push(empresa.productos)
+          productos.push(empresa.producto)
         }
+
 
       })
       listaEmpresas.push({
@@ -117,7 +118,7 @@ var getProductosPorEmpresa= (jsc) => {
    }
    return listaEmpresas;
 }
-
+console.log(getProductosPorEmpresa(jsonData))
 
 
 var getProductosPrecios = (jsc) => {
@@ -137,7 +138,7 @@ var getProductosPrecios = (jsc) => {
     }
     return productosPrecios;
 }
-console.log(getProductosPrecios(jsonData))
+// console.log(getProductosPrecios(jsonData))
 
 
 // var getEmpresasDeCordoba = (jsc)=>{
