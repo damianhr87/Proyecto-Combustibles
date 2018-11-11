@@ -10,7 +10,7 @@ var csvjson=require('csvjson');
 
 var bodyParser=require('body-parser');
 
-app.use(express.static('public'));
+app.use(express.static('./public'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
 
@@ -96,7 +96,7 @@ var getUbicacionEmpresas = (jsc) => {
 
 
 var getProductosPorEmpresa= (jsc) => {
-  
+  // { empresa: 'CORGAS S.A',productos: [ 'Gas Oil Grado 2',   'Gas Oil Grado 2',   'Gas Oil Grado 3',   'Gas Oil Grado 3'
     var empresas = getUbicacionEmpresas(jsc);
     var listaEmpresas= [];
 
@@ -118,7 +118,7 @@ var getProductosPorEmpresa= (jsc) => {
    }
    return listaEmpresas;
 }
-console.log(getProductosPorEmpresa(jsonData))
+//console.log(getProductosPorEmpresa(jsonData))
 
 
 var getProductosPrecios = (jsc) => {
@@ -141,6 +141,7 @@ var getProductosPrecios = (jsc) => {
 // console.log(getProductosPrecios(jsonData))
 
 
+
 // var getEmpresasDeCordoba = (jsc)=>{
 //     let empresas=[];
 //     for(let i=0; i<jsc.length;i++){
@@ -161,10 +162,10 @@ var getProductosPrecios = (jsc) => {
 // }
 
 
+var empresas = getUbicacionEmpresas(jsonData);
 
-
-app.get('/', (req,res)=> console.log('algo'))
-//app.post('/' ,(req,res)=> )
+app.get('/', (req,res)=> res.render('index', {empresa:empresas})) 
+//app.post('/' ,(req,res)=> 
 app.listen(3000 , (req,res)=> console.log("Puerto iniciado")) 
   
 

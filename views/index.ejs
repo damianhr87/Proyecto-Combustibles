@@ -1,58 +1,44 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-
-  <meta charset="utf-8">
-
-  <title>Precios del Combustible en la Argentina</title>
-
-  <!-- jQuery CDN -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
-
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <!-- Optional theme -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-  <!-- Latest compiled and minified JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
+<!-- ------------------------------------------------------------------------------------------------------>
+  <title>Proyecto Precios Combustibles</title>
 </head>
-<body>
-  
-  <style>
-      #map {width: 55%; height: 500px; background-color: # ffe6e6;}
-      body {background-color: # 99ccff; color: white;}
-      .header {background-color: #bfbfff;}
-      h4 {color: #bfbfff;}
-      .map-section {margin: 0px; padding: 0px;}
-      .side-map {margin: 0px; padding: 0px;}
-  </style>
+  <body>
+       
+  <div class="row" >
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12"> HEADER </div>
+         </div> <!--DIV header-->
+        <div class="row"> 
+          <div class="col-sm-12 col-md-6" >
+            <div class="row">
+             <div>
+            <% 
+              for(let i=0; i<empresa.length; i++) {
+            %> <div class="col-sm-12"><h6><%=empresa[i].empresa%></h6></div>
+            <%}%>
+             </div>
+            </div>
+          </div> <!--Div empresa descripcion-->
+        <div class="col-sm-12 col-md-6"> marcas principales</div> <!--Div marcas principales-->
+          <div class="col-sm-12"> mapa </div> <!--DIv Mapa -->
 
-   
 
-  <footer>            </footer>
-  
-  
-  <script>
-      // Initialize and add the map
-      function initMap() {
-        var map = new google.maps.Map(
-            document.getElementById('map'), {
-              center:{lat: -34.397, lng 150.644}
-              zoom: 5});
-        // The marker, positioned at Uluru
-        var marker = new google.maps.Marker({position: argentina, map: map});
-      }
-    </script>
-    <!--Load the API from the specified URL
-    * The async attribute allows the browser to render the page while the API loads
-    * The key parameter will contain your own API key (which is not needed for this tutorial)
-    * The callback parameter executes the initMap() function
-    -->
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAlEnjpXvLzmA9cbFVX5vi6EcIvtL-rTbQ&callback=initMap">
-    </script>
-</body>
+        </div> <!--DIV empresa , marcas principales , mapa--> 
+      </div> <!-- End Container -->
+  </div> <!--End ROW-->  
+
+  </body>
 </html>
