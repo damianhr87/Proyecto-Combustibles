@@ -38,9 +38,10 @@
   <script>
       // Initialize and add the map
       function initMap() {
-        var argentina = {lat: -32, lng: -64};
         var map = new google.maps.Map(
-            document.getElementById('map'), {zoom: 5, center: argentina});
+            document.getElementById('map'), {
+              center:{lat: -34.397, lng 150.644}
+              zoom: 5});
         // The marker, positioned at Uluru
         var marker = new google.maps.Marker({position: argentina, map: map});
       }

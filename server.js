@@ -97,28 +97,28 @@ var getUbicacionEmpresas = (jsc) => {
 
 var getProductosPorEmpresa= (jsc) => {
   
-    var empresas=getUbicacionEmpresas(jsc);
-    var auxiliarArray=[];
-    var auxiliarArray2=[];
+    var empresas = getUbicacionEmpresas(jsc);
+    var listaEmpresas= [];
 
-    for(let i=0;i<jsc.length;i++) {
-
-        let nombreEstacion=jsc[i]["empresa"];
-
-        for(let j=i; j<jsc.length; j++) {
-            
-            if( ((jsc[i]['empresa'] == empresas[j]['empresa']) && (auxiliarArray.indexOf(jsc[j]["producto"])) == -1)) {
-                auxiliarArray.push(jsc[j]["producto"]);
-            }
-
-            auxiliarArray2.push({empresa:nombreEstacion ,productos:auxiliarArray})
+    for (let i = 0; i < empresas.length; i++){
+      var productos=[]
+      jsc.map(empresa => {
+        if (empresa.empresa == empresas[i].empresa){
+          productos.push(empresa.productos)
         }
-    }
 
-   return auxiliarArray2;     // {empresa:nombreEmpresa , productos : [] }
+      })
+      listaEmpresas.push({
+        empresa:empresas[i].empresa,
+        productos : productos
+      })
+      
+    
+   }
+   return listaEmpresas;
 }
 
-console.log(getProductosPorEmpresa(jsonData))
+
 
 var getProductosPrecios = (jsc) => {
     let idscordoba=getEmpresasPorId(jsc);
