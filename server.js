@@ -10,7 +10,8 @@ var csvjson=require('csvjson');
 
 var bodyParser=require('body-parser');
 
-app.use(express.static('./public'));
+
+app.use(express.static('/public'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
 
@@ -94,6 +95,14 @@ var getUbicacionEmpresas = (jsc) => {
     return ubicacionEmpresas;
 }
 
+// var getNaftaGasoil = (jsc) =>{
+//    var flag = true;
+//   for(let i = 0;i < jsc.length; i++){
+//     if (jsc[i].productos[0]) {}
+//   }
+// }
+
+
 
 var getProductosPorEmpresa= (jsc) => {
   // { empresa: 'CORGAS S.A',productos: [ 'Gas Oil Grado 2',   'Gas Oil Grado 2',   'Gas Oil Grado 3',   'Gas Oil Grado 3'
@@ -104,13 +113,12 @@ var getProductosPorEmpresa= (jsc) => {
       var productos=[]
       jsc.map(empresa => {
         if (empresa.empresa == empresas[i].empresa){
-          productos.push(empresa.producto)
+          productos.push({producto: empresa.producto, precio: empresa.precio})
         }
-
-
       })
       listaEmpresas.push({
-        empresa:empresas[i].empresa,
+        empresa: empresas[i].empresa,
+        ubicacion: {latitud: empresas[i].latitud,longitud: empresas[i].longitud},
         productos : productos
       })
       
@@ -118,7 +126,7 @@ var getProductosPorEmpresa= (jsc) => {
    }
    return listaEmpresas;
 }
-//console.log(getProductosPorEmpresa(jsonData))
+console.log(getProductosPorEmpresa(jsonData))
 
 
 var getProductosPrecios = (jsc) => {
