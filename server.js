@@ -11,7 +11,7 @@ var csvjson=require('csvjson');
 var bodyParser=require('body-parser');
 
 
-app.use(express.static('/public'));
+app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
 
@@ -170,9 +170,10 @@ var getProductosPrecios = (jsc) => {
 // }
 
 
-var empresas = getUbicacionEmpresas(jsonData);
+var empresas = getProductosPorEmpresa(jsonData);
+var precios=getProductosPorEmpresa(jsonData);
 
-app.get('/', (req,res)=> res.render('index', {empresa:empresas})) 
+app.get('/', (req,res)=> res.render('index', {empresa:empresas,precio:precios})) 
 //app.post('/' ,(req,res)=> 
 app.listen(3000 , (req,res)=> console.log("Puerto iniciado")) 
   
