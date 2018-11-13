@@ -9,6 +9,7 @@
 <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
 <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
@@ -16,6 +17,7 @@
   <title>Proyecto Precios Combustibles</title>
 </head>
   <body>
+    <header><h1>Combustibles-Territorio Argentino</h1></header>
   <div class="main">      
     <div  class="row" >
       <div class="container">
@@ -24,8 +26,8 @@
          </div> <!--DIV header-->
         <div class="row"> 
           <div class="col-sm-12 col-md-6" >
-            <div class="row">
-              <h2>Estaciones En Córdoba</h2>
+            <div class="row" id="estacion">
+              <h2>Estaciones De Cordoba</h2>
              <div id="empresatotal"> <!--div ,empresas-->
               
             <% 
@@ -36,27 +38,29 @@
              </div> <!--end div empresas-->
              
             </div>
-          </div> <!--Div empresa descripcion-->
-        <div class="col-sm-12 col-md-6"><h2 id="h2marcas">Marcas Principales</h2>
-          <div id="ypf"><img id="ypflogo" src="/images/ypflogo.png" alt="YPF LOGO">Precio Oficial Nafta Premiun $47,60</div>
-          <div id="shell"><img id="shellogo" src="/images/shellogo.png" alt="SHELLOGO">Precio Oficial Nafta Premiun $48,97</div>
-          <div id="axion"><img id="axionlogo" src="/images/axionlogo.png" alt="LOGO AXION">Precio Oficial Nafta Premiun $48,67
+            <div class="row">
+            <div class="col-sm-6">
+                <h2 id="h2mapa">Mapa Cordoba Capital</h2>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d217959.07474534257!2d-64.237613357128!3d-31.39729247963707!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9432985f478f5b69%3A0xb0a24f9a5366b092!2zQ8OzcmRvYmE!5e0!3m2!1ses!2sar!4v1542131211964" width="500" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+              
+            </div>
           </div>
-          <div id="petro"><img id="petrologo" src="/images/petrobraslogo.png" alt="PETROBRAS LOGO">Precio Oficial Nafta Premiun $48,57</div>
+          </div> <!--Div empresa descripcion-->
+        <div class="col-sm-12 col-md-6"><h2 id="h2marca">Marcas Principales</h2>
+          <div id="ypf"><img id="ypflogo" src="/images/ypflogo.png" alt="YPF LOGO"><p>Precio Oficial Nafta Premiun $47,60</p></div>
+          <div id="shell"><img id="shellogo" src="/images/shellogo.png" alt="SHELLOGO"><p>Precio Oficial Nafta Premiun $48,97</p></div>
+          <div id="axion"><img id="axionlogo" src="/images/axionlogo.png" alt="LOGO AXION"><p>Precio Oficial Nafta Premiun $48,67</p>
+          </div>
+          <div id="petro"><img id="petrologo" src="/images/petrobraslogo.png" alt="PETROBRAS LOGO"><p>Precio Oficial Nafta Premiun $48,57</p></div>
 
         </div> <!--Div marcas principales-->
-          <div class="col-sm-12"> 
-            
-            Mapa ubicaciones
-
-           </div> <!--DIv Mapa -->
-
+          
+        
 
         </div> <!--DIV empresa , marcas principales , mapa--> 
       </div> <!-- End Container -->
     </div> <!--End ROW-->  
   </div>
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAlEnjpXvLzmA9cbFVX5vi6EcIvtL-rTbQ=initMap">
-    </script>
+  
 </body>
 </html>

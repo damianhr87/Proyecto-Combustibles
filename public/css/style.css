@@ -3,7 +3,7 @@ body {
 	height: 100%;
 	margin: 0;
 	padding: 0;
-	background-color: #DAF7A6!important ;
+	background-color: #DFDFDF!important;
  }
 
 
@@ -12,28 +12,53 @@ body {
 	width: 350px;
 	height: 350px;
 	overflow: scroll;
-	
-	color: #C70039;	
+	color: #4D3C3C;
+		
 }
 #ypflogo{
 	width: 150px;
 	height: 150px;
-	margin-top: 0px;
 	
+	 
 }
 #shellogo{
 	width: 150px;
 	height: 150px;
-
-}
+	
+	}
 #axionlogo{
 	width: 150px;
 	height: 150px;
+	
+	
 }
 #petrologo{
 	width: 150px;
 	height:150px;
+	
+	
 }
-h2{
-	font-family: 
+header{
+	font-family: 'Anton', sans-serif;
+	color: #589357;
+	text-decoration: underline; 
+}
+#h2marca{
+	font-family: 'Anton', sans-serif;
+	color: #589357;
+	text-decoration: underline; 
+}
+#h2mapa{
+	font-family: 'Anton', sans-serif;
+	color: #589357;
+	text-decoration: underline;
+}
+#estacion{
+	font-family: 'Anton', sans-serif;
+	color: #589357;
+	text-decoration: underline;
+}
+p{
+	font-family: 'Anton', sans-serif;
+	color: #4D3C3C;
 }

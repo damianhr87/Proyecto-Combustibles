@@ -103,7 +103,7 @@ var getUbicacionEmpresas = (jsc) => {
 // }
 
 
-
+// For ProductosporEmpresa return listaEmpresas; ------------------------------------------------
 var getProductosPorEmpresa= (jsc) => {
   // { empresa: 'CORGAS S.A',productos: [ 'Gas Oil Grado 2',   'Gas Oil Grado 2',   'Gas Oil Grado 3',   'Gas Oil Grado 3'
     var empresas = getUbicacionEmpresas(jsc);
@@ -126,9 +126,9 @@ var getProductosPorEmpresa= (jsc) => {
    }
    return listaEmpresas;
 }
-console.log(getProductosPorEmpresa(jsonData))
+//console.log(getProductosPorEmpresa(jsonData))
 
-
+//For precio productos Return precios por producto---------------------------
 var getProductosPrecios = (jsc) => {
     let idscordoba=getEmpresasPorId(jsc);
     let productosPrecios=[];
@@ -150,13 +150,7 @@ var getProductosPrecios = (jsc) => {
 
 
 
-// var getEmpresasDeCordoba = (jsc)=>{
-//     let empresas=[];
-//     for(let i=0; i<jsc.length;i++){
-//         if(id=)
-//     }
 
-// }
 
 // var getEstacionesPorProvincia = (jsc)=>{
 //     let estaciones=[];
